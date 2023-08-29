@@ -1,7 +1,47 @@
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform:scale(2);
+        border-width: 100px;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        border-width: 10px;
+    }
+}
+
+@keyframes headerSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 h1 {
     color : pink;
     text-align: center;
+    border-style: groove;
+    border-radius: 1cap;
+    background-image: url(https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg);
+    background-size: auto;
+    background-position: center center;
+    background-repeat: repeat;
+    animation: headerSlide 1s ease-in-out;
 }
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border: 10px double rgb(252, 116, 234);
+    margin: auto;
+    animation: slideIn 1s ease-in-out;  
+} 
 
 body {
     background-color: cornflowerblue;
@@ -9,5 +49,10 @@ body {
 
 .image-container {
     text-align: center;
+}
+
+.button {
+    transform: translateX(3000%);
+    border: 3px dotted black;
 }
 

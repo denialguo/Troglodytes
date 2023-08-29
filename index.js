@@ -1,4 +1,10 @@
 function alertButton() {
-    alert("you came!!!")
+    window.location.replace("page2.html")
 }
+
+function alertButton1() {
+    window.location.replace("index.html")
+}
+
+
 
