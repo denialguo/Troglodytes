@@ -1,5 +1,5 @@
 function alertButton() {
-    window.location.replace("page2.html")
+    window.location.replace("Daniel.html")
 }
 
 function alertButton1() {
