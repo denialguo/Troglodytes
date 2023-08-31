@@ -34,13 +34,22 @@ h1 {
     animation: headerSlide 1s ease-in-out;
 }
 
+h2 {
+    color: pink;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: lightskyblue;
+}
+
 .box {
     display: flex;
     justify-content: center;
     align-items:center;
     border: 10px double rgb(252, 116, 234);
     margin: auto;
-    animation: slideIn 1s ease-in-out;  
+    animation: slideIn 1s ease-in-out;
+    background-image: url(https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/1c/08/1b/1c081b41-a9d1-ea7d-b703-663f79942039/artwork.jpg/1200x1200bf-60.jpg);
+    background-size: contain;  
 } 
 
 body {
