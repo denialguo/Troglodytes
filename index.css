@@ -35,10 +35,16 @@ h1 {
 }
 
 h2 {
-    color: pink;
-    font-size: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: lightskyblue;
+    color : pink;
+    text-align: center;
+    font-size:xx-large;
+    border-style: groove;
+    border-radius: 1cap;
+    border-color: black;
+    background-size: auto;
+    background-position: center center;
+    background-repeat: repeat;
+    animation: headerSlide 1s ease-in-out;
 }
 
 .box {
