@@ -3,7 +3,7 @@ function alertButton() {
 }
 
 function alertButton1() {
-    window.location.replace("/index.html")
+    window.location.replace("/thebig/index.html")
 }
 
 function sanWeb() {
