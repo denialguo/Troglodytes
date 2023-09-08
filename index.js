@@ -3,7 +3,7 @@ function alertButton() {
 }
 
 function alertButton1() {
-    window.location.replace(window.location.origin + "/index.html")
+    window.location.replace(window.location.origin + "index.html")
 }
 
 function sanWeb() {
