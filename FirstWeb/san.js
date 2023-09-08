@@ -1,4 +1,3 @@
 function buttonClicked() {
-    window.location.replace("../index.html")
-    
+    window.location.href = '../Index/index.html';
 }
