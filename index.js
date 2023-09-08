@@ -3,7 +3,16 @@ function alertButton() {
 }
 
 function alertButton1() {
-    window.location.replace(window.location.origin + "/index.html")
+    const origin = window.location.origin;
+    const path = window.location.pathname;
+
+    if (path.startsWith('/thebig/')) {
+        // You are in the 'thebig' folder, so navigate to the parent folder
+        window.location.replace(origin + path.replace('/thebig/', '/') + 'index.html');
+    } else {
+        // You are in the root folder or a different subfolder, so navigate to 'thebig/index.html'
+        window.location.replace(origin + '/thebig/index.html');
+    }
 }
 
 function sanWeb() {
