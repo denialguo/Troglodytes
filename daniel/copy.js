@@ -3,12 +3,9 @@ function alertButton() {
 }
 
 function alertButton1() {
-    window.location.replace("/thebig/index.html")
+    window.location.replace("/index.html")
 }
 
-function sanWeb() {
-    window.location.replace("san.html")
-}
 
 
 

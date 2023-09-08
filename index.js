@@ -7,7 +7,7 @@ function alertButton1() {
 }
 
 function sanWeb() {
-    window.location.replace("san.html")
+    window.location.replace("FirstWeb/san.html")
 }
 
 
