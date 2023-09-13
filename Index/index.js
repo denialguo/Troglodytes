@@ -1,4 +1,6 @@
-
+function toIshaan() {
+    window.location.href = '../ishaan/ishaan.html'
+}
 function alertButton() {
     window.location.replace("../daniel/Daniel.html")
 }
