@@ -3,7 +3,7 @@
     text-align: center;
     border-style: groove;
     border-radius: 10px;
-    border-width: thick 350px thick 400px; /*top border, right border, bottom border, left border respectively*/
+    border-width: thick 815px thick 815px; /*top border, right border, bottom border, left border respectively*/
     
     border-color: turquoise;
 }
@@ -18,4 +18,22 @@ body {
     margin-right: auto;
     width: 65%;
     border-radius: 50px;
+}
+
+.bio {
+    padding: 10px 10px 5px 5px;
+    border: 2px solid lightgreen;
+    /*border-style: groove;*/
+    border-radius: 5px;
+    border-width: thick thick thick thick;
+}
+
+.bioHeading {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 200%;
+}
+
+.bioDesc {
+    text-align: justify;
 }
