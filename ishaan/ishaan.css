@@ -1,3 +1,31 @@
+@keyframes fadeInImg {
+    0% {  
+        border: 10px solid rgba(135,206,250,0);
+    }
+    100% {
+        border: 10px solid rgba(135,206,250,1);
+    }
+}
+@keyframes fadeOutImg {
+    0% {
+        border: 10px solid rgba(135,206,250,1);
+    }
+    100% {
+        border: 10px solid rgba(135,206,250,0);
+        border-style: none;
+    }
+}
+
+.fadeInImgAnimation {
+    animation: fadeInImg 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.fadeOutImgAnimation {
+    animation: fadeOutImg 0.4s;
+    animation-fill-mode: forwards;
+}
+
 .title {
     color: lightseagreen;
     text-align: center;
