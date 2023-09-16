@@ -19,13 +19,22 @@ body {
     width: 65%;
     border-radius: 50px;
 }
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
 
-.bio {
-    padding: 10px 10px 5px 5px;
+.flex-child {
+    flex: 1;
     border: 2px solid lightgreen;
-    /*border-style: groove;*/
+    padding: 10px 10px 5px 5px;
     border-radius: 5px;
     border-width: thick thick thick thick;
+
+}
+.flex-child:first-child {
+    margin-bottom: 20px;
 }
 
 .bioHeading {

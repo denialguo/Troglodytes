@@ -3,13 +3,19 @@
     <link rel="stylesheet" href="ishaan.css"/>
     <body>
         <h1 class="title">Ishaan Saha</h1>
-        <div class="bio">
-            <h2 class="bioHeading">Welcome to my page!</h2>
-            <p class="bioDesc">Nice to meet you! I'm a senior and I'm going into CS in college. 
-            I've got a lot of Java and Python experience, but for this class I'm trying to hone in my front-end skills (HTML and CSS) through projects like this website. 
-            My hobbies are reading/writing fanfiction, playing videogames, and hanging out with my friends!</p>
+        <div class="flex-container">
+            <div class="flex-child bio">
+                <h2 class="bioHeading">Welcome to my page!</h2>
+                <p class="bioDesc">Nice to meet you! I'm a senior and I'm going into CS in college. 
+                I've got a lot of Java and Python experience, but for this class I'm trying to hone in my front-end skills (HTML and CSS) through projects like this website. 
+                My hobbies are reading/writing fanfiction, playing videogames, and hanging out with my friends!</p>
+            </div>
+            <div class="flex-child status">
+                <h2 class="statusHeading">Roles held:</h2>
+                <p class="statusDesc">Front-end developer</p>
+            </div>
         </div>
-        <img class="irithyll" src="https://w.wallha.com/ws/13/RwWxsUP5.jpg">
+        <img id="irithyll" class="irithyll" src="https://w.wallha.com/ws/13/RwWxsUP5.jpg" onmouseover="imgHover()" onmouseout="imgNoHover()">
         <button class="backButton" onclick="toIndex()">Go back to the main page</button>
     </body>
     <script src="ishaan.js"></script>
