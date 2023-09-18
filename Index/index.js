@@ -7,7 +7,7 @@ function alertButton() {
 
 function sanWeb() {
 // index.js
-    window.location.href = '../FirstWeb/san.html';
+    window.location.href = '../santiago/san.html';
 }
 
 
