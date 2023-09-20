@@ -19,8 +19,7 @@
 }
 
 body {
-    background-image: url(/images/shit.jpg);
-    background-color: black;
+    background-image: url(../SignUpPage/images/shit.jpg);
     animation: backgroundImageAnimation 1s ease-in-out;
 }
 
@@ -47,7 +46,7 @@ fieldset {
 input {
     border: 1px solid white;
     border-radius: 10px;
-    font-size: medium;
+    font-size: large;
     padding-left: 5px;
     padding-right: 5px;
 }
