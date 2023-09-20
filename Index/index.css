@@ -23,14 +23,11 @@
 }
 
 h1 {
-    color : pink;
+    color : hotpink;
     text-align: center;
-    border-style: groove;
-    border-radius: 1cap;
-    background-image: url(https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg);
-    background-size: auto;
-    background-position: center center;
-    background-repeat: repeat;
+    border-style: solid;
+    border-radius: 1cap; 
+    background-color: white;
     animation: headerSlide 1s ease-in-out;
 }
 
