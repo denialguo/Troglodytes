@@ -8,7 +8,7 @@ function toRajdeep() {
     window.location.href = '../rajdeep/index.html';
 }
 function toAkash() {
-    alert('akash quit holdin out on us and give us your sexy webpage!!!11');
+    window.location.href = '../akash/akash.html';
 }
 function alertButton() {
     window.location.replace("../daniel/Daniel.html");
