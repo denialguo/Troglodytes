@@ -10,7 +10,6 @@
         border-width: 10px;
     }
 }
-
 @keyframes headerSlide {
     0% {
         opacity: 0;
@@ -21,63 +20,18 @@
         transform: translateY(0);
     }
 }
-
 h1 {
-    color : pink;
+    color: white;
     text-align: center;
-    border-style: groove;
-    border-radius: 1cap;
-    background-image: url(https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg);
-    background-size: auto;
-    background-position: center center;
-    background-repeat: repeat;
-    animation: headerSlide 1s ease-in-out;
 }
-
-h2 {
-    color: pink;
-    font-size: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: lightskyblue;
-}
-
-h3 {
-    color : pink;
-    text-align: center;
-    font-size:xx-large;
-    border-style: groove;
-    border-radius: 1cap;
-    border-color: black;
-    background-size: auto;
-    background-position: center center;
-    background-repeat: repeat;
-    animation: headerSlide 1s ease-in-out;
-}
-
-.box {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    border: 10px double rgb(252, 116, 234);
-    margin: auto;
-    animation: slideIn 1s ease-in-out;
-    background-image: url(https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/1c/08/1b/1c081b41-a9d1-ea7d-b703-663f79942039/artwork.jpg/1200x1200bf-60.jpg);
-    background-size: contain;  
-} 
-
 body {
-    background-color: cornflowerblue;
+    background-image: url(../Index/Image/background-image.jpg);
     overflow-x: hidden;
     width: 100%;
         margin: 0;
         width: 100vw;
         height: 100vh;
 }
-
-.image-container {
-    text-align: center;
-}
-
 .button {
     transform: translateX(2700%);
     border: 3px dotted black;
