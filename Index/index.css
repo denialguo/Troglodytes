@@ -64,6 +64,8 @@ h3 {
 
 body {
     background-color: cornflowerblue;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .image-container {
@@ -71,6 +73,5 @@ body {
 }
 
 .button {
-    transform: translateX(3000%);
     border: 3px dotted black;
 }
