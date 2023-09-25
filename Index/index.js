@@ -19,5 +19,9 @@ function sanWeb() {
     window.location.href = '../santiago/san.html';
 }
 
+function createanAccount() {
+    window.location.replace("../SignUpPage/LoginPage.html");
+}
+
 
 
