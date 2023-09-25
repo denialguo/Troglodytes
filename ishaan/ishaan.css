@@ -73,4 +73,13 @@ body {
 
 .bioDesc {
     text-align: justify;
+    list-style-type: disc;
+}
+
+.statusHeading {
+    text-align: center;
+}
+
+.stausDesc {
+    text-align: center;
 }
