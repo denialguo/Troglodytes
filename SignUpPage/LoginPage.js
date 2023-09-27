@@ -5,3 +5,4 @@ function forgotPassword() {
 function Cancel() {
     window.location.replace("../Index/index.html");
 }
+

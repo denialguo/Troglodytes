@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Team Troglodytes</title>
     <link rel="stylesheet" href="index.css"/> 
 </head>
 <body>
+    <header class="WebsiteHeader">
+        <div class="MenuBar">
+            <button class="MenuButton" onclick="OverlayOn()">|||</button>
+            <div id="MenuOverlay">
+                <button class="CloseOverlay" onclick="OverlayOff()">X</button>
+            </div>
+        </div>
+    </header>
     <button class="createAccount" onclick="createanAccount()">Create an Account</button>
-    <h1>Welcome to our website!</h1>
     <button class="toDaniel" onClick="alertButton()">Daniel</button><br><br>
     <button class="toIshaan" onClick="toIshaan()">Ishaan</button><br><br>
     <button class="toLucas" onClick="toLucas()">Lucas</button><br><br>

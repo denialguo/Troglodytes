@@ -23,5 +23,12 @@ function createanAccount() {
     window.location.replace("../SignUpPage/LoginPage.html");
 }
 
+function OverlayOn() {
+    document.getElementById("MenuOverlay").style.display = "block";
+}
+function OverlayOff() {
+    document.getElementById("MenuOverlay").style.display = "none";
+}
+
 
 
