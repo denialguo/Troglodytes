@@ -1,0 +1,63 @@
+@keyframes backgroundImageAnimation {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+body {
+    background-image: url(./images/shit.jpg);
+    animation: backgroundImageAnimation 1s ease-in-out;
+}
+
+h1 {
+    text-align: left;
+    color: white;
+}
+
+form {
+    color: white;
+}
+
+fieldset {
+    color: white;
+    text-align: center;
+    border: 3px solid white;
+    border-radius: 10px;
+    border-collapse: collapse;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 150px;
+    animation: slideIn 1s ease-in-out;
+}
+input {
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: large;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.submit:hover {
+    background-color: grey;
+}
+.forgotPassword {
+    color: royalblue;
+    display: none;
+}
+.forgotPassword:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

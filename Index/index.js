@@ -20,7 +20,11 @@ function sanWeb() {
 }
 
 function createanAccount() {
-    window.location.replace("../SignUpPage/LoginPage.html");
+    window.location.replace("../login/signup.php");
+}
+
+function logIn() {
+    window.location.replace("../login/login.php");
 }
 
 function OverlayOn() {
