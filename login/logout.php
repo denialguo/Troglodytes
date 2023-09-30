@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
     require_once "../resources/connectdb.php";
     $sql = "INSERT INTO Logs (actionID, description) VALUES (10, ?)";
     $stmt = $conn->prepare($sql);

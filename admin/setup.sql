@@ -28,7 +28,7 @@ CREATE TABLE Jobs (
 );
 
 INSERT INTO Jobs (title, description) VALUES
-('Test Job', 'This is a job only used for testing'), -- 1
+('Test Job', 'This is a job only used for testing.'), -- 1
 ('Webmaster', ''), -- 2
 ('Front-end Developer', ''), -- 3
 ('Back-end Developer', ''), -- 4
