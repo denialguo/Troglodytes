@@ -81,7 +81,7 @@ CREATE TABLE JobsPermissions (
 );
 
 INSERT INTO JobsPermissions (jobID, permissionID) VALUES 
-(2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (6, 4);
+(2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2,8), (2,9), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9), (6, 4);
 
 CREATE TABLE Actions (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
