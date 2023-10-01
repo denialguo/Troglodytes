@@ -23,7 +23,7 @@ INSERT INTO Logins (username) VALUES ('admin');
 
 CREATE TABLE Jobs (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255)
 );
 
@@ -52,13 +52,13 @@ CREATE TABLE MembersJobs (
 
 CREATE TABLE Skills (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255)
 );
 
 CREATE TABLE Permissions(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255)
 );
 
@@ -69,7 +69,9 @@ INSERT INTO Permissions (title, description) VALUES
 ('VIEW_LOGS', 'Allows members to view the logs.'), -- 4
 ('EDIT_PROFILES', 'Allows members to edit the profiles of other members.'), -- 5
 ('DELETE_ACCOUNTS', 'Allows members to delete accounts of other people.'), -- 6
-('RESET_DATABASE', 'Allows members to reset the database.'); -- 7
+('RESET_DATABASE', 'Allows members to reset the database.'), -- 7
+('LINK_ACCOUNTS', 'Allows members to link or unlink accounts to members.'), -- 8
+('MANAGE_JOBS', 'Allows members to manage who has what job, and the permissions that each job has.'); -- 
 
 CREATE TABLE JobsPermissions (
 	jobID INT,
@@ -83,7 +85,7 @@ INSERT INTO JobsPermissions (jobID, permissionID) VALUES
 
 CREATE TABLE Actions (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(50) UNIQUE NOT NULL,
     description VARCHAR(255)
 );
 
@@ -97,7 +99,9 @@ INSERT INTO Actions (title, description) VALUES
 ('MEMBER_UPDATED', "A member's information was updated."), -- 7
 ('MEMBER_REMOVED', 'A member was removed from the database.'), -- 8
 ('LOGGED_IN', 'An account logged in.'), -- 9
-('LOGGED_OUT', 'An account logged out.'); -- 10
+('LOGGED_OUT', 'An account logged out.'), -- 10
+('ACCOUNT_LINKED', 'An account was linked to a member.'), -- 11
+('ACCOUNT_UNLINKED', 'An account was unlinked from a member.'); -- 12
 
 CREATE TABLE Logs (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -113,7 +117,7 @@ CREATE TABLE Logs (
 
 CREATE TABLE Projects (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255),
     startDate DATETIME,
     endDate DATETIME

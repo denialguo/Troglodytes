@@ -1,12 +1,10 @@
 <?php
-session_start();
+require_once "../resources/connectdb.php";
  
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true){
     header("location: ./login.php");
     exit;
 }
-
-require_once "../resources/connectdb.php";
 
 $new_password = $confirm_password = "";
 $new_password_err = $confirm_password_err = "";

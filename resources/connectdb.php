@@ -10,4 +10,20 @@
     $conn->query("USE Troglodytes;");
   }
   
+  session_start();
+
+  if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
+    $sql = "SELECT id FROM Logins WHERE id = ?";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("i", $param_id);
+        $param_id = $_SESSION["id"];
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                $_SESSION = array();
+                session_destroy();
+            }
+        }
+      }
+  }
 ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../resources/connectdb.php";
  
 // Checks if user is logged in
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){

@@ -1,12 +1,11 @@
 <?php
-session_start();
+require_once "../resources/connectdb.php";
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
     header("location: ../Index/welcome.php");
     exit;
 }
 
-require_once "../resources/connectdb.php";
 $err = $username = $password = $confirm_password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

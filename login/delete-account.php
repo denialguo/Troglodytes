@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../resources/connectdb.php";
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     header("location: ./login.php");
@@ -7,8 +7,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once "../resources/connectdb.php";
-
     $err = "";
     $username = $_SESSION["username"];
     $password = trim($_POST["password"]);

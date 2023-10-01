@@ -1,9 +1,8 @@
 <?php
 // Initialize the session
-session_start();
+require_once "../resources/connectdb.php";
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
-    require_once "../resources/connectdb.php";
     $sql = "INSERT INTO Logs (actionID, description) VALUES (10, ?)";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("s", $param_username);
