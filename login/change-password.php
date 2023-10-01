@@ -1,5 +1,5 @@
 <?php
-require_once "../resources/connectdb.php";
+require_once "../resources/util.php";
  
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true){
     header("location: ./login.php");
