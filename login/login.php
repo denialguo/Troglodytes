@@ -45,11 +45,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
                             $sql = "INSERT INTO Logs (actionID, description) VALUES (9, ?)";
-                            $stmt2 = $conn->prepare($sql);
-                            $stmt2->bind_param("s", $param_username);
-                            $param_username = $username;
-                            $stmt2->execute();
-                            $stmt2->close();
+                            if ($stmt2 = $conn->prepare($sql)) {
+                                $stmt2->bind_param("s", $param_username);
+                                $param_username = $username;
+                                $stmt2->execute();
+                                $stmt2->close();
+                            }
                             header("location: ../Index/welcome.php");
                         } else {
                             $login_err = "Invalid password!";

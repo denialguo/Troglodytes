@@ -7,9 +7,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
 }
 
 require_once "../resources/connectdb.php";
+$err = $username = $password = $confirm_password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $err = $username = $password = $confirm_password = "";
     $u = trim($_POST["username"]);
     $p = trim($_POST["password"]);
     $c = trim($_POST["confirm_password"]);
@@ -63,11 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $param_password = password_hash($password, PASSWORD_DEFAULT);
                     if ($stmt->execute()) {
                         $sql = "INSERT INTO Logs (actionID, description) VALUES (3, ?)";
-                        $stmt2 = $conn->prepare($sql);
-                        $stmt2->bind_param("s", $param_username);
-                        $param_username = $username;
-                        $stmt2->execute();
-                        $stmt2->close();
+                        if ($stmt2 = $conn->prepare($sql)) {
+                            $stmt2->bind_param("s", $param_username);
+                            $param_username = $username;
+                            $stmt2->execute();
+                            $stmt2->close();
+                        }
                         header("location: ./login.php");
                     } else {
                         $err = "Oops! An error occured. Please try again later.";
@@ -111,9 +112,9 @@ $conn->close();
             (i.e. not every account will have a member associated with it)
         -->
          <label for="username">Username:</label><br>
-         <input id="username" name="username"><br><br>
+         <input id="username" name="username" value="<?php echo $username; ?>"><br><br>
          <label for="password">Password:</label><br>
-         <input type="password" id="password" name="password"><br><br>
+         <input type="password" id="password" name="password" value="<?php echo $password; ?>"><br><br>
          <label for="confirm_password">Confirm Password:</label><br>
          <input type="password" id="confirm_password" name="confirm_password"><br><br>
          <input class="submit" type="submit" value="Submit" href="Login2.html"><br><br>

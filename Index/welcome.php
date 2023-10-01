@@ -26,5 +26,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true){
         <a href="../login/logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
         <a href="../Index/index.html" class="btn btn-primary">Back to Main Page</a>
     </p>
+    <p>
+        <a href="../login/delete-account.php" class="btn btn-danger">DELETE Your Account</a>
+    </p>
 </body>
 </html>

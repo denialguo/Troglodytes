@@ -40,11 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->execute()) {
                 session_destroy();
                 $sql = "INSERT INTO Logs (actionID, description) VALUES (4, ?)";
-                $stmt2 = $conn->prepare($sql);
-                $stmt2->bind_param("s", $param_username);
-                $param_username = "User '".$_SESSION["username"]."' changed their password.";
-                $stmt2->execute();
-                $stmt2->close();
+                if ($stmt2 = $conn->prepare($sql)) {
+                    $stmt2->bind_param("s", $param_username);
+                    $param_username = "User '".$_SESSION["username"]."' changed their password.";
+                    $stmt2->execute();
+                    $stmt2->close();
+                }
                 header("location: ./login.php");
                 exit();
             } else {
