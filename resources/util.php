@@ -1,11 +1,11 @@
 <?php
-//session_start();
-
 require_once "connectdb.php";
 
 function getMember($c, $username) {
-    if (empty($username) || $username == "admin") {
+    if (empty($username)) {
         return NULL;
+    } else if ($username == "admin") {
+        return 1;
     } else {
         $sql = "SELECT memberID FROM Logins WHERE username = ?";
         if ($stmt = $c->prepare($sql)) {

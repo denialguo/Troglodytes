@@ -10,6 +10,8 @@ CREATE TABLE Members (
     profileText VARCHAR(10000)
 );
 
+INSERT INTO Members (fName, lName, profileText) VALUES ('Admin', 'Admin', 'The default administrator account.');
+
 CREATE TABLE Logins (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
