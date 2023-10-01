@@ -1,19 +1,110 @@
 <?php
 require_once "../resources/util.php";
  
-if(!(hasPermission($c, "ADD_MEMBERS"))){
+if(!(hasPermission($conn, "ADMINISTRATOR"))){
     header("location: ./sorry.html");
     exit;
 }
 
-$fName = $fName_err = $lName = $lName_err = $pic = $pic_err = "";
+$fName = $fName_err = $lName = $lName_err = $pic = $pic_err = $profile = "";
+$jobs = array();
+$warning = $err = $success = false;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fName = trim($_POST["fName"]);
+    $lName = trim($_POST["lName"]);
+    $pic = trim($_POST["pic"]);
+    $profile = trim($_POST["profile"]);
+    if (isset($_POST["jobs"])) {
+        $jobs = $_POST["jobs"];
+    };
+
+    if (empty($fName)) {
+        $fName_err = "Please enter a first name.";
+    } else if (!preg_match('/^[a-zA-Z]+$/', $fName)) {
+        $fName_err = "Name can only contain English letters.";
+    } else if (preg_match('/admin/i', $fName)) {
+        $fName_err = "Name cannot contain 'admin'.";
+    }
+
+    if (empty($lName)) {
+        $lName_err = "Please enter a last name.";
+    } else if (!preg_match('/^[a-zA-Z]+$/', $lName)) {
+        $lName_err = "Name can only contain English letters.";
+    } else if (preg_match('/admin/i', $lName)) {
+        $lName_err = "Name cannot contain 'admin'.";
+    }
+
+    if (strlen($pic) > 255) {
+        $pic_err = "Photo URL is too long. Use a link with fewer than 255 characters.";
+    }
+
+    $sql = "SELECT id FROM Members WHERE LOWER(fName) = LOWER(?) AND LOWER(lName) = LOWER(?)";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("ss", $param_fName, $param_lName);
+        $param_fName = $fName;
+        $param_lName = $lName;
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            if ($stmt->num_rows > 0 && (!isset($_SESSION["prev_fName"]) || !isset($_SESSION["prev_lName"]) || ($_SESSION["prev_fName"] != $fName) || ($_SESSION["prev_lName"] != $lName))) {
+                $_SESSION["prev_fName"] = $fName;
+                $_SESSION["prev_lName"] = $lName;
+                $warning = true;
+            } else {
+                $warning = false;
+            }
+            $stmt->close();
+        }
+    }
+
+    if (empty($fName_err) && empty($lName_err) && empty($pic_err) && !($warning)) {
+
+        if(!(hasPermission($conn, "ADMINISTRATOR"))){
+            header("location: ./sorry.html");
+            exit;
+        }
+
+        $sql = "INSERT INTO Members (fName, lName, picURL, profileText) VALUES (?, ?, ?, ?)";
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param("ssss", $param_fName, $param_lName, $param_pic, $profile);
+            $param_fName = $fName;
+            $param_lName = $lName;
+            $param_pic = $pic;
+            if ($stmt->execute()) {
+                $memberID = mysqli_insert_id($conn);
+                for ($i = 0; $i < count($jobs); $i++) {
+                    $sql = "INSERT INTO MembersJobs (memberID, jobID) VALUES (?, ?)";
+                    if ($stmt2 = $conn->prepare($sql)) {
+                        $stmt2->bind_param("ii", $param_memberID, $param_jobID);
+                        $param_memberID = $memberID;
+                        $param_jobID = $jobs[$i];
+                        $stmt2->execute();
+                        $stmt2->close();
+                    }
+                }
+                $currentMember = getMember($conn, $_SESSION["username"]);
+                createLog($conn, $currentMember, $memberID, "MEMBER_ADDED", "Added member ".$fName." ".$lName.(!(empty($pic)) ? " with a picture URL of ".$pic : ""));
+                if (!empty($profile)) {
+                    createLog($conn, $currentMember, $memberID, "PROFILE_UPDATED", $profile);
+                }
+                unset($_SESSION["prev_fName"]);
+                unset($_SESSION["prev_lName"]);
+                
+                $success = true;
+            } else {
+                $err = true;
+            }
+            $stmt->close();
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Add Member</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body{ font: 14px sans-serif; }
@@ -27,7 +118,25 @@ $fName = $fName_err = $lName = $lName_err = $pic = $pic_err = "";
 <body>
     <div class="wrapper">
         <h2>Add a Member</h2>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+        <?php 
+            if ($err) {
+                echo '<div class="alert alert-danger"><b>Oops!</b> An error occured while trying to add that member.</div>';
+            }        
+        ?>
+
+        <?php 
+            if ($warning) {
+                echo '<div class="alert alert-warning">A member already exists with the same first and last name. Are you sure you want to add another member with the same name? If you are trying to update a member, use the <a href="./update-member.php">update member</a> form.</div>';
+            }        
+        ?>
+
+        <?php 
+            if ($success) {
+                echo '<div class="alert alert-success">Successfully added member. ID: <b>'.$memberID.'</b></div>';
+            }        
+        ?>
+
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form"> 
             <div class="form-group">
                 <label>First Name</label>
                 <input name="fName" class="form-control <?php echo (!empty($fName_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $fName; ?>">
@@ -43,6 +152,10 @@ $fName = $fName_err = $lName = $lName_err = $pic = $pic_err = "";
                 <input name="pic" class="form-control <?php echo (!empty($pic_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $pic; ?>">
             </div>
             <div class="form-group">
+                <label>Profile Text (optional, 10,000 characters max)</label>
+                <textarea name="profile" form="form" value="<?php echo $profile;?>" class="form-control" maxlength="10000"></textarea>
+            </div>
+            <div class="form-group">
                 <?php
                     $sql = "SELECT * FROM Jobs;";
                     $result = $conn->query($sql);
@@ -50,7 +163,7 @@ $fName = $fName_err = $lName = $lName_err = $pic = $pic_err = "";
                         echo '<label>Jobs</label><br>';
                         while ($row = $result->fetch_assoc()) {
                             echo '<div class="job-checkbox"><label>';
-                            echo '<input type="checkbox" name="jobs" value="'.$row["id"].'"/>';
+                            echo '<input type="checkbox" name="jobs[]" value="'.$row["id"].'" '. ((isset($jobs) && in_array($row["id"], $jobs)) ? 'checked' : '') .'/>';
                             if (empty($row["description"])) {
                                 echo '<text>'.htmlspecialchars($row["title"]).'</text>';
                             } else {
@@ -68,4 +181,11 @@ $fName = $fName_err = $lName = $lName_err = $pic = $pic_err = "";
         </form>
     </div>
 </body>
+
+<script type="text/javascript">
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href ); // fuck you, duplicate form submission
+    }
+</script>
+
 </html>

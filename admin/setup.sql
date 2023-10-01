@@ -46,8 +46,8 @@ INSERT INTO Jobs (title, description) VALUES
 ('Coordinator', ''); -- 14
 
 CREATE TABLE MembersJobs (
-	memberID INT,
-    jobID INT,
+	memberID INT NOT NULL,
+    jobID INT NOT NULL,
     FOREIGN KEY (memberID) REFERENCES Members(id),
     FOREIGN KEY (jobID) REFERENCES Jobs(id)
 );
@@ -67,23 +67,18 @@ CREATE TABLE Permissions(
 INSERT INTO Permissions (title, description) VALUES
 ('TEST_PERMISSION', 'This is a permission used only for testing.'), -- 1
 ('ADMINISTRATOR', 'Grants full permissions.'), -- 2
-('ADD_MEMBERS', 'Allows members to create profiles for new members.'), -- 3
-('REMOVE_MEMBERS', "Allows members to delete a member's profile."), -- 4
-('VIEW_LOGS', 'Allows members to view the logs.'), -- 5
-('EDIT_PROFILES', 'Allows members to edit the profiles of other members.'), -- 6
-('DELETE_ACCOUNTS', 'Allows members to delete accounts of other people.'), -- 7
-('RESET_DATABASE', 'Allows members to reset the database.'), -- 8
-('LINK_ACCOUNTS', 'Allows members to link or unlink accounts to members.'), -- 9
-('MANAGE_JOBS', 'Allows members to manage who has what job, and the permissions that each job has.'); -- 10
+('REMOVE_MEMBERS', "Allows members to delete a member's profile."), -- 3
+('VIEW_LOGS', 'Allows members to view the logs.'), -- 4
+('DELETE_ACCOUNTS', 'Allows members to delete accounts of other people.'); -- 5
 
 CREATE TABLE JobsPermissions (
-	jobID INT,
-    permissionID INT,
+	jobID INT NOT NULL,
+    permissionID INT NOT NULL,
     FOREIGN KEY (jobID) REFERENCES Jobs(id),
     FOREIGN KEY (permissionID) REFERENCES Permissions(id)
 );
 
-INSERT INTO JobsPermissions (jobID, permissionID) VALUES (2, 2), (4, 2), (6, 5);
+INSERT INTO JobsPermissions (jobID, permissionID) VALUES (2, 2), (4, 2), (6, 4);
 
 CREATE TABLE Actions (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -103,7 +98,8 @@ INSERT INTO Actions (title, description) VALUES
 ('LOGGED_IN', 'An account logged in.'), -- 9
 ('LOGGED_OUT', 'An account logged out.'), -- 10
 ('ACCOUNT_LINKED', 'An account was linked to a member.'), -- 11
-('ACCOUNT_UNLINKED', 'An account was unlinked from a member.'); -- 12
+('ACCOUNT_UNLINKED', 'An account was unlinked from a member.'), -- 12
+('PROFILE_UPDATED', "A member's profile was updated."); -- 13
 
 CREATE TABLE Logs (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

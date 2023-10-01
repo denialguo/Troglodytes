@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                     }
                 } else {
-                    $err = "Oops! An error occured while trying to log you in.";
+                    $err = "Oops! An error occured while trying to delete your account.";
                 }
                 $stmt->close();
             }
