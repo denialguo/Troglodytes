@@ -1,14 +1,11 @@
 <?php
-require_once "../resources/connectdb.php";
+require_once "../resources/util.php";
  
 // Checks if user is logged in
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: ../Index/welcome.php");
     exit;
 }
- 
-// Connect to DB
-require_once "../resources/connectdb.php";
 
 $username = $password = "";
 $username_err = $login_err = "";
@@ -39,18 +36,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_result($id, $username, $hashed);
                     if ($stmt->fetch()) {
                         if (!($hashed) || password_verify($password, $hashed)) {
-                            session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-
-                            $sql = "INSERT INTO Logs (actionID, description) VALUES (9, ?)";
-                            if ($stmt2 = $conn->prepare($sql)) {
-                                $stmt2->bind_param("s", $param_username);
-                                $param_username = $username;
-                                $stmt2->execute();
-                                $stmt2->close();
-                            }
+                            $memberID = getMember($conn, $username);
+                            createLog($conn, $memberID, $memberID, 'LOGGED_IN', $username);
                             header("location: ../Index/welcome.php");
                         } else {
                             $login_err = "Invalid password!";

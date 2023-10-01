@@ -1,16 +1,11 @@
 <?php
 // Initialize the session
-require_once "../resources/connectdb.php";
+require_once "../resources/util.php";
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
-    $sql = "INSERT INTO Logs (actionID, description) VALUES (10, ?)";
-    if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("s", $param_username);
-        $param_username = $_SESSION["username"];
-        $stmt->execute();
-        $stmt->close();
-    }
-    $conn->close();
+    $username = $_SESSION["username"];
+    $memberID = getMember($conn, $username);
+    createLog($conn, $memberID, $memberID, 'LOGGED_OUT', $username);
 }
 
 

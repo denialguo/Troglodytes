@@ -36,15 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_id = $_SESSION["id"];
             
             if ($stmt->execute()) {
+                $username = $_SESSION["username"];
                 $_SESSION = array();
                 session_destroy();
-                $sql = "INSERT INTO Logs (actionID, description) VALUES (4, ?)";
-                if ($stmt2 = $conn->prepare($sql)) {
-                    $stmt2->bind_param("s", $param_username);
-                    $param_username = "User '".$_SESSION["username"]."' changed their password.";
-                    $stmt2->execute();
-                    $stmt2->close();
-                }
+                $memberID = getMember($conn, $username);
+                createLog($conn, $memberID, $memberID, 'ACCOUNT_UPDATED', "User '".$username."' changed their password.");
                 header("location: ./login.php");
                 exit();
             } else {

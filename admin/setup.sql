@@ -64,14 +64,15 @@ CREATE TABLE Permissions(
 
 INSERT INTO Permissions (title, description) VALUES
 ('TEST_PERMISSION', 'This is a permission used only for testing.'), -- 1
-('ADD_MEMBERS', 'Allows members to create profiles for new members.'), -- 2
-('REMOVE_MEMBERS', "Allows members to delete a member's profile."), -- 3
-('VIEW_LOGS', 'Allows members to view the logs.'), -- 4
-('EDIT_PROFILES', 'Allows members to edit the profiles of other members.'), -- 5
-('DELETE_ACCOUNTS', 'Allows members to delete accounts of other people.'), -- 6
-('RESET_DATABASE', 'Allows members to reset the database.'), -- 7
-('LINK_ACCOUNTS', 'Allows members to link or unlink accounts to members.'), -- 8
-('MANAGE_JOBS', 'Allows members to manage who has what job, and the permissions that each job has.'); -- 
+('ADMINISTRATOR', 'Grants full permissions.'), -- 2
+('ADD_MEMBERS', 'Allows members to create profiles for new members.'), -- 3
+('REMOVE_MEMBERS', "Allows members to delete a member's profile."), -- 4
+('VIEW_LOGS', 'Allows members to view the logs.'), -- 5
+('EDIT_PROFILES', 'Allows members to edit the profiles of other members.'), -- 6
+('DELETE_ACCOUNTS', 'Allows members to delete accounts of other people.'), -- 7
+('RESET_DATABASE', 'Allows members to reset the database.'), -- 8
+('LINK_ACCOUNTS', 'Allows members to link or unlink accounts to members.'), -- 9
+('MANAGE_JOBS', 'Allows members to manage who has what job, and the permissions that each job has.'); -- 10
 
 CREATE TABLE JobsPermissions (
 	jobID INT,
@@ -80,12 +81,11 @@ CREATE TABLE JobsPermissions (
     FOREIGN KEY (permissionID) REFERENCES Permissions(id)
 );
 
-INSERT INTO JobsPermissions (jobID, permissionID) VALUES 
-(2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2,8), (2,9), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9), (6, 4);
+INSERT INTO JobsPermissions (jobID, permissionID) VALUES (2, 2), (4, 2), (6, 5);
 
 CREATE TABLE Actions (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) UNIQUE NOT NULL,
+    title VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255)
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE Logs (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     memberID INT,
     affectedMemberID INT,
-    actionID INT,
+    actionID INT NOT NULL,
     description VARCHAR(10000),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (memberID) REFERENCES Members(id),

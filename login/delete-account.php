@@ -1,5 +1,5 @@
 <?php
-require_once "../resources/connectdb.php";
+require_once "../resources/util.php";
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     header("location: ./login.php");
@@ -33,13 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     $stmt2->execute();
                                     $stmt2->close();
                                 }
-                                $sql = "INSERT INTO Logs (actionID, description) VALUES (5, ?)";
-                                if ($stmt3 = $conn->prepare($sql)) {
-                                    $stmt3->bind_param("s", $param_description);
-                                    $param_description = "User '".$username."' with ID ".strval($_SESSION["id"])." deleted their account.";
-                                    $stmt3->execute();
-                                    $stmt3->close();
-                                }
+                                $memberID = getMember($conn, $username);
+                                createLog($conn, $memberID, $memberID, 'ACCOUNT_DELETED', "User '".$username."' with ID ".strval($_SESSION["id"])." deleted their account.");
                                 $_SESSION = array();
                                 session_destroy();
                                 header("location: ./goodbye.html");

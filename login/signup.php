@@ -1,5 +1,5 @@
 <?php
-require_once "../resources/connectdb.php";
+require_once "../resources/util.php";
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
     header("location: ../Index/welcome.php");
@@ -61,13 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $param_username = $username;
                     $param_password = password_hash($password, PASSWORD_DEFAULT);
                     if ($stmt->execute()) {
-                        $sql = "INSERT INTO Logs (actionID, description) VALUES (3, ?)";
-                        if ($stmt2 = $conn->prepare($sql)) {
-                            $stmt2->bind_param("s", $param_username);
-                            $param_username = $username;
-                            $stmt2->execute();
-                            $stmt2->close();
-                        }
+                        createLog($conn, NULL, NULL, 'ACCOUNT_REGISTERED', $username);
                         header("location: ./login.php");
                     } else {
                         $err = "Oops! An error occured. Please try again later.";
