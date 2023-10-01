@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_id = $_SESSION["id"];
             
             if ($stmt->execute()) {
+                $_SESSION = array();
                 session_destroy();
                 $sql = "INSERT INTO Logs (actionID, description) VALUES (4, ?)";
                 if ($stmt2 = $conn->prepare($sql)) {
