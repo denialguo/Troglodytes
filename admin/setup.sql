@@ -125,4 +125,4 @@ CREATE TABLE Projects (
     endDate DATETIME
 );
 
-INSERT INTO Logs (actionID, description) VALUES (2, 'Completed setup.');
+INSERT INTO Logs (memberID, affectedMemberID, actionID, description) VALUES (1, 1, 2, 'Completed setup.');
