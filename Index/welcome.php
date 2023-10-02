@@ -1,6 +1,6 @@
 <?php
 // Initialize the session
-require_once "../resources/connectdb.php";
+require_once "../resources/util.php";
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true){
@@ -29,5 +29,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true){
     <p>
         <a href="../login/delete-account.php" class="btn btn-danger">DELETE Your Account</a>
     </p>
+    <?php
+        if (hasPermission($conn, "ADMINISTRATOR")) {
+            echo '<a href="../admin/dashboard.php" class="btn btn-danger">Admin dashboard</a>';
+        }
+    ?>
 </body>
 </html>
