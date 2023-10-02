@@ -82,12 +82,13 @@ function checkPermissions($c, $username, $permission) {
                 $param_member_ID = $memberID;
                 if ($stmt->execute()) {
                     $stmt->store_result();
+                    $stmt->bind_result($j);
                     $foundPermission = false;
-                    while ($row = $stmt->fetch_assoc()) {
+                    while ($stmt->fetch()) {
                         $sql = "SELECT permissionID FROM JobsPermissions WHERE jobID = ? AND (permissionID = 2 OR permissionID = ?)"; // Permission ID 2 is administrator
                         if ($stmt2 = $c->prepare($sql)) {
                             $stmt2->bind_param("ii", $param_job_ID, $param_perm_ID);
-                            $param_job_ID = $row["jobID"];
+                            $param_job_ID = $j;
                             $param_perm_ID = $permission_id;
                             if ($stmt2->execute()) {
                                 $stmt2->store_result();
