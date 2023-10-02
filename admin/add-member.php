@@ -11,8 +11,8 @@ $jobs = array();
 $warning = $err = $success = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fName = trim($_POST["fName"]);
-    $lName = trim($_POST["lName"]);
+    $fName = substr(trim($_POST["fName"]),0,50);
+    $lName = substr(trim($_POST["lName"]),0,50);
     $pic = trim($_POST["pic"]);
     $profile = trim($_POST["profile"]);
     if (isset($_POST["jobs"])) {

@@ -18,10 +18,10 @@ CREATE TABLE Logins (
     password VARCHAR(255),
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     memberID INT,
-    FOREIGN KEY (memberID) REFERENCES Members(id)
+    FOREIGN KEY (memberID) REFERENCES Members(id) ON DELETE SET NULL
 );
 
-INSERT INTO Logins (username) VALUES ('admin');
+INSERT INTO Logins (username, memberID) VALUES ('admin', 1);
 
 CREATE TABLE Jobs (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -48,8 +48,8 @@ INSERT INTO Jobs (title, description) VALUES
 CREATE TABLE MembersJobs (
 	memberID INT NOT NULL,
     jobID INT NOT NULL,
-    FOREIGN KEY (memberID) REFERENCES Members(id),
-    FOREIGN KEY (jobID) REFERENCES Jobs(id)
+    FOREIGN KEY (memberID) REFERENCES Members(id) ON DELETE CASCADE,
+    FOREIGN KEY (jobID) REFERENCES Jobs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Skills (
@@ -74,8 +74,8 @@ INSERT INTO Permissions (title, description) VALUES
 CREATE TABLE JobsPermissions (
 	jobID INT NOT NULL,
     permissionID INT NOT NULL,
-    FOREIGN KEY (jobID) REFERENCES Jobs(id),
-    FOREIGN KEY (permissionID) REFERENCES Permissions(id)
+    FOREIGN KEY (jobID) REFERENCES Jobs(id) ON DELETE CASCADE,
+    FOREIGN KEY (permissionID) REFERENCES Permissions(id) ON DELETE CASCADE
 );
 
 INSERT INTO JobsPermissions (jobID, permissionID) VALUES (2, 2), (4, 2), (6, 4);
@@ -108,8 +108,6 @@ CREATE TABLE Logs (
     actionID INT NOT NULL,
     description VARCHAR(10000),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (memberID) REFERENCES Members(id),
-    FOREIGN KEY (affectedMemberID) REFERENCES Members(id),
     FOREIGN KEY (actionID) REFERENCES Actions(id)
 );
 

@@ -16,7 +16,23 @@ function getMember($c, $username) {
                 if ($stmt->num_rows == 1) {
                     $stmt->bind_result($memberID);
                     if ($stmt->fetch()) {
-                        return $memberID;
+                        $sql = "SELECT id FROM Members WHERE id = ?";
+                        if ($stmt2 = $c->prepare($sql)) {
+                            $stmt2->bind_param("i", $param_memberID);
+                            $param_memberID = $memberID;
+                            if ($stmt2->execute()) {
+                                $stmt2->store_result();
+                                if ($stmt2->num_rows == 1) {
+                                    return $memberID;
+                                } else {
+                                    return NULL;
+                                }
+                            } else {
+                                return NULL;
+                            }
+                        } else {
+                            return NULL;
+                        }
                     } else {
                         return NULL;
                     }
