@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label>Profile Text (optional, 10,000 characters max)</label>
-                <textarea name="profile" form="form" value="<?php echo $profile;?>" class="form-control" maxlength="10000"></textarea>
+                <textarea name="profile" form="form" class="form-control" maxlength="10000"><?php echo $profile;?></textarea>
             </div>
             <div class="form-group">
                 <?php

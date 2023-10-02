@@ -55,7 +55,7 @@ function checkPermissions($c, $username, $permission) {
     } else if ($username == "admin") {
         return true;
     } else {
-        $sql = "SELECT permissionID FROM Permissions WHERE title = ?";
+        $sql = "SELECT id FROM Permissions WHERE title = ?";
         if ($stmt = $c->prepare($sql)) {
             $stmt->bind_param("s", $param_title);
             $param_title = $permission;

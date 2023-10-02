@@ -1,56 +1,56 @@
 <?php
 require_once "../resources/util.php";
  
-if (!(hasPermission($conn, "REMOVE_MEMBERS"))) {
+if (!(hasPermission($conn, "DELETE_ACCOUNTS"))) {
     header("location: ./sorry.html");
     exit;
 }
 
-$err = $reason = "";
+$username_err = $err = $username = $reason = "";
 $success = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (!(hasPermission($conn, "REMOVE_MEMBERS"))) {
+    if (!(hasPermission($conn, "DELETE_ACCOUNTS"))) {
         header("location: ./sorry.html");
         exit;
     }
 
-    $memberID = 0;
+    $username = trim($_POST["username"]);
     $reason = trim($_POST["reason"]);
-    if (isset($_POST["member"])) {
-        $memberID = intval($_POST["member"]);
-    }
-    if (!($memberID) || $memberID == 1) { // Member ID 1 is the Admin, which cannot be deleted.
-        $err = "Please select a member.";
+    if (empty($username)) {
+        $username_err = "Please enter a username.";
+    } else if (preg_match('/admin/i', $username)) {
+        $username_err = "You cannot ban the admin account.";
     } else {
-        $sql = "SELECT fName, lName FROM Members WHERE id = ?";
+        $sql = "SELECT memberID FROM Logins WHERE username = ?";
         if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("i", $param_memberID);
-            $param_memberID = $memberID;
+            $stmt->bind_param("s", $param_username);
+            $param_username = $username;
             if ($stmt->execute()) {
                 $stmt->store_result();
                 if ($stmt->num_rows == 1) {
-                    $stmt->bind_result($fName, $lName);
+                    $stmt->bind_result($affectedMemberID);
                     $stmt->fetch();
-                    $sql = "DELETE FROM Members WHERE id = ?";
+                    $sql = "DELETE FROM Logins WHERE username = ?";
                     if ($stmt2 = $conn->prepare($sql)) {
-                        $stmt2->bind_param("i", $param_memberID);
-                        $param_memberID = $memberID;
+                        $stmt2->bind_param("s", $param_username);
+                        $param_username = $username;
                         if ($stmt2->execute()) {
                             $currentMember = getMember($conn, $_SESSION["username"]);
-                            createLog($conn, $currentMember, $memberID, 'MEMBER_REMOVED', $fName.' '.$lName.' was removed.'.(!empty($reason) ? ' Reason: '.$reason : ''));
+                            createLog($conn, $currentMember, $affectedMemberID, 'ACCOUNT_DELETED', $username.' was banned.'.(!empty($reason) ? ' Reason: '.$reason : ''));
                             $success = true;
+                            $username = "";
                         } else {
-                            $err = "<b>Oops!</b> An error occured while trying to delete that member.";
+                            $err = "<b>Oops!</b> An error occured while trying to delete that account.";
                         }
                         $stmt2->close();
                     }
                 } else {
-                    $err = "Please select a member.";
+                    $username_err = "User not found.";
                 }
             } else {
-                $err = "<b>Oops!</b> An error occured while trying to delete that member.";
+                $err = "<b>Oops!</b> An error occured while trying to delete that account.";
             }
         }
     }
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Remove a Member</title>
+    <title>Ban an Account</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body{ font: 14px sans-serif; }
@@ -72,11 +72,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="wrapper">
-        <h2>Remove a Member</h2>
+        <h2>Ban an Account</h2>
 
         <div class="alert alert-warning">
-            <b>Warning!</b> If you delete a member, it is permanent!
-            This form will <b>not</b> ban any accounts associated with the member. Looking to ban an account instead? Use the <a href="./ban-account.php">ban account</a> form.
+            <b>Warning!</b> If you ban an account, it is permanent!
+            Looking to remove a member instead? Use the <a href="./remove-member.php">remove member</a> form.
         </div>
 
         <?php 
@@ -87,22 +87,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <?php 
             if ($success) {
-                echo '<div class="alert alert-success">Successfully removed that member.</div>';
+                echo '<div class="alert alert-success">Successfully deleted that account.</div>';
             }        
         ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form"> 
             <div class="form-group">
-                <select name="member" class="form-control">
-                    <option value="">Choose a member...</option>
-                    <?php 
-                        $sql = "SELECT id, fName, lName FROM Members WHERE NOT id = 1;";
-                        $result = $conn->query($sql);
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<option value="'.$row["id"].'">'.$row["fName"].' '.$row["lName"].' ('.$row["id"].')</option>';
-                        }
-                    ?>
-                </select>
+                <label>Username</label>
+                <input name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>
             <div class="form-group">
                 <label>Reason (optional)</label>
