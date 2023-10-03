@@ -22,6 +22,7 @@ if(!(hasPermission($conn, "ADMINISTRATOR"))){
     <p>
         <a href="./add-member.php" class="btn btn-success">Add a member</a>
         <a href="./remove-member.php" class="btn btn-danger">Remove a member</a>
+        <a href="./update-member.php" class="btn btn-primary">Update a member</a>
         <a href="./ban-account.php" class="btn btn-warning">Ban an account</a>
         <a href="./link-account.php" class="btn btn-info">Link accounts to members</a>
     </p>
