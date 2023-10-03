@@ -1,7 +1,7 @@
 <?php
   // This is the same as the other file except it uses the database "Troglodytes"
 
-  $conn = mysqli_connect('localhost', 'root','123456');
+  $conn = mysqli_connect('localhost','root','');
    
   // Check connection
   if($conn === false){
