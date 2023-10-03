@@ -7,7 +7,7 @@ if(!(hasPermission($conn, "ADMINISTRATOR"))){
 }
 
 $fName = $fName_err = $lName = $lName_err = $pic = $pic_err = $profile = "";
-$jobs = array();
+$jobs = $job_list = array();
 $warning = $err = $success = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -73,17 +73,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->execute()) {
                 $memberID = mysqli_insert_id($conn);
                 for ($i = 0; $i < count($jobs); $i++) {
-                    $sql = "INSERT INTO MembersJobs (memberID, jobID) VALUES (?, ?)";
+                    $sql = "SELECT title FROM Jobs WHERE id = ?";
                     if ($stmt2 = $conn->prepare($sql)) {
-                        $stmt2->bind_param("ii", $param_memberID, $param_jobID);
-                        $param_memberID = $memberID;
+                        $stmt2->bind_param("i", $param_jobID);
                         $param_jobID = $jobs[$i];
-                        $stmt2->execute();
-                        $stmt2->close();
+                        if ($stmt2->execute()) {
+                            $stmt2->store_result();
+                            if ($stmt2->num_rows == 1) {
+                                $stmt2->bind_result($j);
+                                $stmt2->fetch();
+                                array_push($job_list, $j);
+                                $sql = "INSERT INTO MembersJobs (memberID, jobID) VALUES (?, ?)";
+                                if ($stmt3 = $conn->prepare($sql)) {
+                                    $stmt3->bind_param("ii", $param_memberID, $param_jobID);
+                                    $param_memberID = $memberID;
+                                    $param_jobID = $jobs[$i];
+                                    $stmt3->execute();
+                                    $stmt3->close();
+                                }
+                            }
+                        }
                     }
+                    
                 }
                 $currentMember = getMember($conn, $_SESSION["username"]);
-                createLog($conn, $currentMember, $memberID, "MEMBER_ADDED", "Added member ".$fName." ".$lName.(!(empty($pic)) ? " with a picture URL of ".$pic : ""));
+                createLog($conn, $currentMember, $memberID, "MEMBER_ADDED", "Added member ".$fName." ".$lName.".".(!(empty($pic)) ? " Picture URL: ".$pic."." : "")." Jobs: ".(count($job_list) > 0 ? join(", ", $job_list) : "None"));
                 if (!empty($profile)) {
                     createLog($conn, $currentMember, $memberID, "PROFILE_UPDATED", $profile);
                 }
