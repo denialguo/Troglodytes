@@ -1,6 +1,6 @@
 <?php
   /* Attempt to connect to MySQL database */
-  $conn = mysqli_connect('localhost', 'root','');
+  $conn = mysqli_connect('localhost', 'root','123456');
    
   // Check connection
   if($conn === false){
