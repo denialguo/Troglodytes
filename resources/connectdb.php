@@ -1,7 +1,9 @@
 <?php
   // This is the same as the other file except it uses the database "Troglodytes"
 
-  $conn = mysqli_connect('localhost','root','');
+  require_once 'password.php';
+  /* Attempt to connect to MySQL database */
+  $conn = mysqli_connect('localhost', 'root',$DB_PASSWORD);
    
   // Check connection
   if($conn === false){
