@@ -4,7 +4,7 @@
     $err = $pic = $old_pic = $profile = $old_profile = $pic_err = "";
     $success = false;
     if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true || !$memberID) {
-        $err = 'Your account isn\'t linked to a member. Ask an administrator for help or <a href="../login/login.php">log in</a> to a linked account.<br><a href="./welcome.php">Go back</a>';
+        $err = 'Your aren\'t signed in, or your account isn\'t linked to a member. Ask an administrator for help or <a href="../login/login.php">log in</a> to a linked account.<br><a href="./welcome.php">Go back</a>';
     } else {
         if ($memberID > 0) {
             $sql = "SELECT picURL, profileText FROM Members WHERE id = ?";
