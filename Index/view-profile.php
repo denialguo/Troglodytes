@@ -74,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </head>
 <body>
     <h2>View Profile</h2>
+    <a href="./welcome.php">Back</a>
     <?php 
         if ($err) {
             echo '<div class="alert alert-danger">'.$err.'</div>';
@@ -84,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <select name="member" class="form-control">
                 <option value="">Choose a member...</option>
                 <?php 
-                    $sql = "SELECT id, fName, lName FROM Members WHERE NOT id = 1;";
+                    $sql = "SELECT id, fName, lName FROM Members";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
                         echo '<option '.($row["id"] == $memberID ? 'selected ' : '').'value="'.$row["id"].'">'.$row["fName"].' '.$row["lName"].' ('.$row["id"].')</option>';
