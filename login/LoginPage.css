@@ -55,7 +55,6 @@ input {
 }
 .forgotPassword {
     color: royalblue;
-    display: none;
 }
 .forgotPassword:hover {
     text-decoration: underline;
