@@ -19,5 +19,20 @@ function sanWeb() {
     window.location.href = '../santiago/san.html';
 }
 
+function createanAccount() {
+    window.location.replace("../login/signup.php");
+}
+
+function logIn() {
+    window.location.replace("../login/login.php");
+}
+
+function OverlayOn() {
+    document.getElementById("MenuOverlay").style.display = "block";
+}
+function OverlayOff() {
+    document.getElementById("MenuOverlay").style.display = "none";
+}
+
 
 
