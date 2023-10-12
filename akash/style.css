@@ -3,5 +3,8 @@ html {
     width: 100%;
   }
   body {
-    background-color: indianred;
+    background-color: powderblue;
+  }
+  #qwerty {
+    border: 1px solid fuchsia;
   }
