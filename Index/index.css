@@ -50,7 +50,7 @@ body {
 #MenuOverlay {
     position: fixed;
     display: none;
-    width: 15%;
+    width: 12%;
     height: 100%;
     top: 0;
     left: 0;
@@ -60,6 +60,8 @@ body {
     z-index: 2;
     border-radius: 10px;
     margin-left: -8px;
+    flex-direction: column;
+    align-items: center;
   }
 .CloseOverlay {
     margin-top: 10px;
@@ -67,4 +69,15 @@ body {
 }
 .CloseOverlay:hover {
     cursor: pointer;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This centers the buttons horizontally */
+}
+.button-container > button {
+    margin: 10px 0; /* Adjust as needed */
+}
+#MenuOverlay > button {
+    margin: 10px 0;  /* Increase the vertical spacing between buttons */
 }

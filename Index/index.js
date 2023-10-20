@@ -28,7 +28,7 @@ function logIn() {
 }
 
 function OverlayOn() {
-    document.getElementById("MenuOverlay").style.display = "block";
+    document.getElementById('MenuOverlay').style.display = 'flex';
 }
 function OverlayOff() {
     document.getElementById("MenuOverlay").style.display = "none";
