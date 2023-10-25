@@ -5,7 +5,7 @@ function toLucas() {
     window.location.href = '../lucas/lucas.html';
 }
 function toRajdeep() {
-    window.location.href = '../rajdeep/index.html';
+    window.location.href = '../rajdeep/rajdeep.html';
 }
 function toAkash() {
     window.location.href = '../akash/akash.html';

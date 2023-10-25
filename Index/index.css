@@ -81,3 +81,13 @@ body {
 #MenuOverlay > button {
     margin: 10px 0;  /* Increase the vertical spacing between buttons */
 }
+a img {
+    border: 2px solid #007bff; /* Add a blue border to the image */
+    border-radius: 5px; /* Add rounded corners to the image */
+    width: 20%; /* Ensure the image doesn't exceed its container's width */
+}
+.flex-container a {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
