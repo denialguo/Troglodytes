@@ -38,8 +38,12 @@ body {
     flex-direction: row;
 }
 .MenuButton {
+    position: absolute;
+    left: -0.5%;
+    top: 3%;
+    transform: translateY(-10%);
     margin-left: 15px;
-    margin-top: 18px;
+    margin-right: 15px;
     height: 30px;
     width: 30px;
     border: 2px solid black;
@@ -73,13 +77,36 @@ body {
 .button-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers the buttons horizontally */
+    align-items: center; 
 }
 .button-container > button {
-    margin: 10px 0; /* Adjust as needed */
+    margin: 10px 0; 
 }
 #MenuOverlay > button {
-    margin: 10px 0;  /* Increase the vertical spacing between buttons */
+    margin: 10px 0;  
+    padding: 10px 10px;
+    border: none;       
+    background-color: #f2f2f2; 
+    cursor: pointer;     
+    transition: background-color 0.3s; 
+}
+
+.title {
+    font-family: "Lexend Deca", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    place-items: center;
+    flex-grow: 1;
+    color: #000; /* Black text color */
+    font-size: 32px; /* Font size */
+    text-align: center;
+    
+}
+.WebsiteHeader {
+    display: flex;        /* Added this line */
+    align-items: center;  /* Added this line */
+    justify-content: space-between;  /* Added this line */
+    background-color: grey;
+    height: 64px;
 }
 a img {
     border: 2px solid #007bff; /* Add a blue border to the image */
