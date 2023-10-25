@@ -14,12 +14,12 @@
                     <button class="CloseOverlay" onclick="OverlayOff()">X</button>
                     <button class="createAccount" onclick="createanAccount()">Create an Account</button>
                     <button class="login" onclick="logIn()">Sign in</button>
-                    <button class="toDaniel" onClick="alertButton()">Daniel</button>
+                    <button class="toDaniel" onClick="toDaniel()">Daniel</button>
                     <button class="toIshaan" onClick="toIshaan()">Ishaan</button>
                     <button class="toLucas" onClick="toLucas()">Lucas</button>
                     <button class="toRajdeep" onClick="toRajdeep()">Rajdeep</button>
                     <button class="toAkash" onClick="toAkash()">Akash</button>
-                    <button class="Button" onclick="sanWeb()">Santiago</button>
+                    <button class="toSantiago" onclick="toSantiago()">Santiago</button>
                 </div>
             </div>
             <div class="title">
@@ -27,39 +27,14 @@
             </div>
         </div>
     </header>
-    <button class="createAccount" onclick="createanAccount()">Create an Account</button>
-    <button class="login" onclick="logIn()">Sign in</button><br><br>
-    <button class="toDaniel" onClick="alertButton()">Daniel</button><br><br>
-    <button class="toIshaan" onClick="toIshaan()">Ishaan</button><br><br>
-    <button class="toLucas" onClick="toLucas()">Lucas</button><br><br>
-    <button class="toRajdeep" onClick="toRajdeep()">Rajdeep</button><br><br>
-    <button class="toAkash" onClick="toAkash()">Akash</button><br><br>
-    <button class="Button" onclick="sanWeb()">Santiago</button><br><br>
-    <div class="flex-container"></div>    
-        <a href="../daniel/Daniel.html">
-            <img src="../Index/Image/placeholder.jpg"
-            alt="Click me~" />
-        </a>
-        <a href="../ishaan/ishaan.html">
-            <img src="../Index/Image/placeholder.jpg"
-            alt="Click me~" />
-        </a>
-        <a href="../santiago/san.html">
-            <img src="../Index/Image/placeholder.jpg"
-            alt="Click me~" />
-        </a>
-        <a href="../lucas/lucas.html">
-            <img src="../Index/Image/placeholder.jpg"
-            alt="Click me~" />
-        </a>
-        <a href="../akash/akash.html">
-            <img src="../Index/Image/placeholder.jpg"
-            alt="Click me~" />
-        </a>
-        <a href="../rajdeep/rajdeep.html">
-            <img src="../Index/Image/placeholder.jpg"
-            alt="Click me~" />
-        </a>
+    <div class="flex-container">    
+        <button class="image-button ishaan" onclick="redirectTo('ishaan')">Ishaan</button>
+        <button class="image-button daniel" onclick="redirectTo('daniel')">Daniel</button>
+        <button class="image-button santiago" onclick="redirectTo('santiago')">Santiago</button>
+        <button class="image-button lucas" onclick="redirectTo('lucas')">Lucas</button>
+        <button class="image-button akash" onclick="redirectTo('akash')">Akash</button>
+        <button class="image-button rajdeep" onclick="redirectTo('rajdeep')">Rajdeep</button>
+
     </div>
 </body>
 <script src="./index.js"></script>

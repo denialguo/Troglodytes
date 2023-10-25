@@ -10,13 +10,28 @@ function toRajdeep() {
 function toAkash() {
     window.location.href = '../akash/akash.html';
 }
-function alertButton() {
-    window.location.replace("../daniel/Daniel.html");
+function toDaniel() {
+    window.location.href = ("../daniel/Daniel.html");
 }
 
-function sanWeb() {
-// index.js
+function toSantiago() {
     window.location.href = '../santiago/san.html';
+}
+function redirectTo(name) {
+    let urlMapping = {
+        'ishaan': '../ishaan/ishaan.html',
+        'lucas': '../lucas/lucas.html',
+        'rajdeep': '../rajdeep/rajdeep.html',
+        'akash': '../akash/akash.html',
+        'daniel': '../daniel/Daniel.html',
+        'santiago': '../santiago/san.html'
+    };
+
+    if (urlMapping[name]) {
+        window.location.href = urlMapping[name];
+    } else {
+        console.error('Invalid name provided.');
+    }
 }
 
 function createanAccount() {
