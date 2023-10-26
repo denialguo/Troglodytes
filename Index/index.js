@@ -15,7 +15,7 @@ function toDaniel() {
 }
 
 function toIndex() {
-    window.location.href = ("../Index/index.html");
+    window.location.href = ("../Index/Index.html");
 }
 function toProjects() {
     window.location.href = ("../projects/projects.html");
