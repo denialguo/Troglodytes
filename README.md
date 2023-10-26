@@ -1,4 +1,3 @@
 # DanielWantsToGoIvys.github.io
-me trying to make a website with 0 experience lmao.
-you really don't need a read me lmao
+The most epic, cool, and skilled webpage ever created. Team Troglodytes!!!!!!!!!!!
 https://danielwantstogotoivys.github.io/Troglodytes/Index/index.html
