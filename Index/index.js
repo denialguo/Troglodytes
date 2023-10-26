@@ -14,6 +14,13 @@ function toDaniel() {
     window.location.href = ("../daniel/Daniel.html");
 }
 
+function toIndex() {
+    window.location.href = ("../index/index.html");
+}
+function toProjects() {
+    window.location.href = ("../projects/projects.html");
+}
+
 function toSantiago() {
     window.location.href = '../santiago/san.html';
 }

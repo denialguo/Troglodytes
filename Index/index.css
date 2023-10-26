@@ -110,26 +110,48 @@ body {
 }
 .image-button {
     background: url('../Index/Image/placeholder.jpg') no-repeat center center;
-    background-size: cover;  /* Cover the entire button */
-    border: none;  /* Remove default button border */
-    width: 200px;  /* Width of the button */
-    height: 200px; /* Height of the button */
-    cursor: pointer;  /* Change cursor to hand on hover */
-    outline: none;  /* Remove default focus outline */
-    transition: transform 0.3s;  /* Add a smooth transition */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-position: center; /* Center the image */
+    background-size: cover;  
+    border: none;  
+    width: 200px;
+    height: 200px;
+    cursor: pointer; 
+    outline: none;  
+    transition: transform 0.3s;  
+    background-repeat: no-repeat; 
+    background-position: center;
 }
 .daniel {
     background-image: url('../Index/Image/daniel.JPG');
 }
+.santiago {
+    background-image: url('../Index/Image/daniel.JPG');
+}
+
+.ishaan {
+    background-image: url('../Index/Image/daniel.JPG');
+}
+
+.rajdeep {
+    background-image: url('../Index/Image/daniel.JPG');
+}
+
+.akash {
+    background-image: url('../Index/Image/daniel.JPG');
+}
+.lucas {
+    background-image: url('../Index/Image/daniel.JPG');
+}
 .image-button:hover {
-    transform: scale(1.1);  /* Enlarge the button slightly on hover */
+    transform: scale(1.1);  
 }
 .flex-container {
     display: flex;
-    justify-content: center; /* Horizontally center the items */
-    flex-wrap: wrap; /* Allow wrapping if there's not enough space */
-    gap: 30px; /* Spacing between the buttons */
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 30px; 
     margin-top: 10%;
+}
+.textContent p {
+    color: #ffffff;  
+    font-size: large;
 }
