@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.collapsible {
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px;
+    border: none;
+    text-align: left;
+    outline: none;
+    width: 100%;
+    font-size: large;
+}
+
+.collapsible-container {
+    display: inline-block;
+    width: 80%;
+}
+
+
+.collapsible-content {
+    padding: 0 18px;
+    background-color: #222;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    text-align: left;
+}
+
+a {
+    color: skyblue;
+}
+
+.collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+  
+.collapsible-active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.section-box {
+    border: 2px solid gray;
+    margin: 12px 12px 12px 12px;
+    padding: 12px;
+}
