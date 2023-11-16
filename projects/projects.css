@@ -37,6 +37,10 @@ body {
     background-image: url(./1.png)
 }
 
+.project-2 {
+    background-image: none;
+}
+
 .project p {
     vertical-align: middle;
 }
