@@ -3,12 +3,12 @@ function changeSlide(slideshow, n) {
     const dots = document.querySelectorAll('.dot');
 
     for (var i = 0; i < imgs.length; i++) { // reset
-      imgs[i].style.opacity = 0;
+      imgs[i].style.display = 'none';
       dots[i].className = dots[i].className.replace(' active', '');
     }
   
     currentImg = n;
   
-    imgs[currentImg].style.opacity = 1;
+    imgs[currentImg].style.display = 'inline-block';
     dots[currentImg].className += ' active';
 }
