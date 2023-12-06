@@ -119,27 +119,29 @@ body {
     transition: transform 0.3s;  
     background-repeat: no-repeat; 
     background-position: center;
+    font-size: large;
+    color: white;
 }
 .daniel {
     background-image: url('../Index/Image/daniel.JPG');
 }
 .santiago {
-    background-image: url('../Index/Image/daniel.JPG');
+    background-image: url('../Index/Image/santiago.jpeg');
 }
 
 .ishaan {
-    background-image: url('../Index/Image/daniel.JPG');
+    background-image: url('../Index/Image/ishaan.png');
 }
 
 .rajdeep {
-    background-image: url('../Index/Image/daniel.JPG');
+    background-image: url('../Index/Image/rajdeep.jpeg');
 }
 
 .akash {
-    background-image: url('../Index/Image/daniel.JPG');
+    background-image: url('../Index/Image/akash.jpeg');
 }
 .lucas {
-    background-image: url('../Index/Image/daniel.JPG');
+    background-image: url('../Index/Image/lucas.png');
 }
 .image-button:hover {
     transform: scale(1.1);  
