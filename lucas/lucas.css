@@ -1,18 +1,20 @@
 body {
-    background-color: #069420;
-    color: #fff;
-    font-family: sans-serif;
-    margin: 0px;
-  }
-  .box {
-    border: 1px solid white;
-    width: 30%;
-    margin-left: 5px;
-    text-align: center;
-  }
-  .container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  
+  background-color: #069420;
+  color: #fff;
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 20px;
+}
+
+.box {
+  border: 1px solid white;
+  width: 30%;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
