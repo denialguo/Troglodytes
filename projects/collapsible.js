@@ -23,5 +23,7 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
-coll[0].classList.toggle("collapsible-active");
-coll[0].nextElementSibling.style.maxHeight = coll[0].nextElementSibling.scrollHeight + "px";
+window.addEventListener("load", () => {
+  coll[0].classList.toggle("collapsible-active");
+  coll[0].nextElementSibling.style.maxHeight = coll[0].nextElementSibling.scrollHeight + "px";
+})
