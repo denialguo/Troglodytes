@@ -15,7 +15,6 @@
         border-style: none;
     }
 }
-
 .fadeInImgAnimation {
     animation: fadeInImg 0.4s;
     animation-fill-mode: forwards;
@@ -39,18 +38,23 @@
 body {
     background-color: cornsilk;
 }
-
-.irithyll {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 65%;
-    border-radius: 50px;
+.column {
+    float: left;
+    width: 33.33%;
+    height:220px;
+}
+columnText {
+    font-size: 30px;
+}
+.row:after {
+    content:"";
+    display: table;
+    clear: both;
 }
 .flex-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
 }
 
 .flex-child {

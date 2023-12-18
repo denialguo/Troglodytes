@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
     <link rel="stylesheet" href="ishaan.css"/>
     <body>
         <h1 class="title">Ishaan Saha</h1>
@@ -11,13 +14,34 @@
                 My hobbies are reading/writing fanfiction, playing videogames, and hanging out with my friends!</p>
             </div>
             <div class="flex-child status">
-                <h2 class="statusHeading">Roles held:</h2>
+                <h2 class="bioHeading">Roles held:</h2>
                 <ul class="statusDesc">
-                    <li>Front-end Developer</li>
+                    <li>Front-end Web Developer</li>
+                    <li>Game Developer</li>
+                    <li>Godot Enthusiast</li>
                 </ul>
             </div>
         </div>
-        <img id="irithyll" class="irithyll" src="https://w.wallha.com/ws/13/RwWxsUP5.jpg" onmouseover="imgHover()" onmouseout="imgNoHover()">
+            <div class="flex-child projects">
+                <h1 class="bioHeading">Our Projects</h1>
+                <div class="row">
+                    <div class="column" style="background-color:#aaa;">
+                        <h2>Our Website</h2>
+                        <p class="columnText">I worked on both making my personal webpage and linking all the webpages together with Santiago. As a group, our team collectively had little experience with designing websites entirely with HTML, CSS, and Javascript, so it was nice to learn these basic skills while making this site!
+                        </p>
+                    </div>
+                    <div class="column" style="background-color:#bbb;">
+                        <h2>Zombie Shooter Game (Working Title)</h2>
+                        <p class="columnText"> I contributed mostly to the enemies and designing the overall structure for the game (the "enemyTest.tscn" and "level.tscn" files respectively). This includes setting up the wave and points system, creating the powerups, and adding things for people to spend their points on (i.e. unlocking doors to explore new areas and upgrade machines to upgrade their weapons). I also added in some music!</p>
+                        <p class="columnText">Overall, I had an absolute blast working on this project with the team. Sure, we hit plenty of roadblocks, but it was still a fun experience building an entire game from the ground up.</p>
+                    </div>
+                    <div class="column" style="background-color:#ccc;">
+                        <h2>Pong with Guns/Pistol Pong</h2>
+                        <p class="columnText">I added a menu and controls screen for the game. I also coded the movement for the paddles, and added both music and sound effects.</p>
+                        <p class="columnText">(P.S. I'm impressed how a game can feel so much more livelier and immersive when adding the right sound effects. I'll be sure to use this knowledge in both the Zombie Shooter game and future games we'll hopefully be able to make as projects!)</p>
+                    </div>
+                </div>
+            </div>
         <button class="backButton" onclick="toIndex()">Go back to the main page</button>
     </body>
     <script src="ishaan.js"></script>
