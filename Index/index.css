@@ -23,6 +23,8 @@
 body {
     background-image: url(../Index/Image/background-image.jpg);
     overflow-x: hidden;
+    font-family: sans-serif;
+    text-align: center;
     width: 100%;
         margin: 0;
         width: 100vw;
