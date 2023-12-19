@@ -74,6 +74,10 @@ body {
 }
 
 .button {
-    transform: translateX(3000%);
-    border: 3px dotted black;
+    border: 3pxblack;
+    margin: 12px 0px 0px 7px;  
+    padding: 10px 10px;     
+    background-color: #ffffff00; 
+    cursor: pointer;     
+    transition: background-color 0.3s;
 }
