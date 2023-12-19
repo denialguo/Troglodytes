@@ -1,37 +1,11 @@
-@keyframes fadeInImg {
-    0% {  
-        border: 10px solid rgba(135,206,250,0);
-    }
-    100% {
-        border: 10px solid rgba(135,206,250,1);
-    }
-}
-@keyframes fadeOutImg {
-    0% {
-        border: 10px solid rgba(135,206,250,1);
-    }
-    100% {
-        border: 10px solid rgba(135,206,250,0);
-        border-style: none;
-    }
-}
-.fadeInImgAnimation {
-    animation: fadeInImg 0.4s;
-    animation-fill-mode: forwards;
-}
 
-.fadeOutImgAnimation {
-    animation: fadeOutImg 0.4s;
-    animation-fill-mode: forwards;
-}
 
 .title {
-    color: lightseagreen;
+    color: black;
     text-align: center;
-    border-style: groove;
-    border-radius: 10px;
-    border-width: thick 815px thick 815px; /*top border, right border, bottom border, left border respectively*/
-    
+    border-style: dashed;
+    border-radius: 15px;
+    /*border-width: thick 500px thick 500px; /*top border, right border, bottom border, left border respectively*/
     border-color: turquoise;
 }
 
@@ -40,11 +14,13 @@ body {
 }
 .column {
     float: left;
-    width: 33.33%;
-    height:220px;
+    width: 32.3%;
+    height:330px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-columnText {
-    font-size: 30px;
+.columnText {
+    font-size: 16px;
 }
 .row:after {
     content:"";
