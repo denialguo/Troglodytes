@@ -11,7 +11,7 @@ html {
   width: 100%;
 }
 #qwerty {
-  border: 1px solid fuchsia;
+  border: 1px solid black;
 }
 @keyframes slideIn {
   0% {
@@ -39,16 +39,15 @@ html {
 
 
 h2 {
-  color: pink;
+  color: black;
   font-size: 40px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color: lightskyblue;
 }
 
 h3 {
-  color : pink;
+  color : black;
   text-align: center;
-  font-size:xx-large;
+  font-size:large;
   border-style: groove;
   border-radius: 1cap;
   border-color: black;
@@ -60,12 +59,12 @@ h3 {
 
 
 body {
-  background-color: cornflowerblue;
+  background-color: white;
   font-size: 18px;
 }
 
 .image-container {
-  text-align: center;
+  text-align: right;
 }
 
 .button {
@@ -75,19 +74,4 @@ body {
   background-color: #ffffff00; 
   cursor: pointer;     
   transition: background-color 0.3s;
-}
-
-.list-container {
-  border: 1px solid #ddd; 
-  padding: 15px; 
-  margin-bottom: 20px; 
-  background-color: #f9f9f9; 
-  border-radius: 10px; 
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 18px;
-}
-.list-container:hover {
-  transform: scale(1.05);  
 }
