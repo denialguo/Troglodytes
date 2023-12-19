@@ -8,3 +8,81 @@ html {
   #qwerty {
     border: 1px solid fuchsia;
   }
+  @keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform:scale(2);
+        border-width: 100px;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        border-width: 10px;
+    }
+}
+
+@keyframes headerSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+h2 {
+    color: pink;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: lightskyblue;
+}
+
+h3 {
+    color : pink;
+    text-align: center;
+    font-size:xx-large;
+    border-style: groove;
+    border-radius: 1cap;
+    border-color: black;
+    background-size: auto;
+    background-position: center center;
+    background-repeat: repeat;
+    animation: headerSlide 1s ease-in-out;
+}
+
+
+body {
+    background-color: cornflowerblue;
+    font-size: 18px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.button {
+    border: 3pxblack;
+    margin: 12px 0px 0px 7px;  
+    padding: 10px 10px;     
+    background-color: #ffffff00; 
+    cursor: pointer;     
+    transition: background-color 0.3s;
+}
+
+.list-container {
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+}
+.list-container:hover {
+    transform: scale(1.05);  
+}
