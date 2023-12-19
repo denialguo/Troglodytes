@@ -79,10 +79,10 @@ body {
     flex-direction: column;
     align-items: center; 
 }
-.button-container > button {
+.button-container > a > button {
     margin: 10px 0; 
 }
-#MenuOverlay > button {
+#MenuOverlay > a > button, #MenuOverlay > button {
     margin: 10px 0;  
     padding: 10px 10px;
     border: none;       
