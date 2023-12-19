@@ -6,7 +6,7 @@ html {
     background-color: powderblue;
   }
   #qwerty {
-    border: 1px solid fuchsia;
+    border: 1px solid darkblue;
   }
   @keyframes slideIn {
     0% {
@@ -55,7 +55,7 @@ h3 {
 
 
 body {
-    background-color: cornflowerblue;
+    background-color: whitesmoke;
     font-size: 18px;
 }
 
