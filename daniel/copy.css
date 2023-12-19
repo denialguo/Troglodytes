@@ -22,17 +22,6 @@
     }
 }
 
-h1 {
-    color : pink;
-    text-align: center;
-    border-style: groove;
-    border-radius: 1cap;
-    background-image: url(https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg);
-    background-size: auto;
-    background-position: center center;
-    background-repeat: repeat;
-    animation: headerSlide 1s ease-in-out;
-}
 
 h2 {
     color: pink;
@@ -54,19 +43,10 @@ h3 {
     animation: headerSlide 1s ease-in-out;
 }
 
-.box {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    border: 10px double rgb(252, 116, 234);
-    margin: auto;
-    animation: slideIn 1s ease-in-out;
-    background-image: url(https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/1c/08/1b/1c081b41-a9d1-ea7d-b703-663f79942039/artwork.jpg/1200x1200bf-60.jpg);
-    background-size: contain;  
-} 
 
 body {
     background-color: cornflowerblue;
+    font-size: 18px;
 }
 
 .image-container {
@@ -80,4 +60,19 @@ body {
     background-color: #ffffff00; 
     cursor: pointer;     
     transition: background-color 0.3s;
+}
+
+.list-container {
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+}
+.list-container:hover {
+    transform: scale(1.05);  
 }
