@@ -6,3 +6,72 @@ html {
 #rajdeep {
   border: 1px solid indianred;
 }
+html {
+  height: 100%;
+  width: 100%;
+}
+#qwerty {
+  border: 1px solid black;
+}
+@keyframes slideIn {
+  0% {
+      opacity: 0;
+      transform:scale(2);
+      border-width: 100px;
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1);
+      border-width: 10px;
+  }
+}
+
+@keyframes headerSlide {
+  0% {
+      opacity: 0;
+      transform: translateY(-100%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+
+h2 {
+  color: black;
+  font-size: 40px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h3 {
+  color : black;
+  text-align: center;
+  font-size:large;
+  border-style: groove;
+  border-radius: 1cap;
+  border-color: black;
+  background-size: auto;
+  background-position: center center;
+  background-repeat: repeat;
+  animation: headerSlide 1s ease-in-out;
+}
+
+
+body {
+  background-color: white;
+  font-size: 18px;
+}
+
+.image-container {
+  text-align: right;
+}
+
+.button {
+  border: 3pxblack;
+  margin: 12px 0px 0px 7px;  
+  padding: 10px 10px;     
+  background-color: #ffffff00; 
+  cursor: pointer;     
+  transition: background-color 0.3s;
+}
